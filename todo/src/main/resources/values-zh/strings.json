@@ -1,0 +1,7 @@
+{
+  "splash_center_title": "Relight 任务清单",
+  "todo_list_empty_text": "添加新任务",
+  "todo_list_error_text": "请求失败，请点击重试",
+  "refresh_error": "刷新失败 !",
+  "load_more_error": "加载更多失败 !"
+}

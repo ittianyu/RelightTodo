@@ -1,0 +1,2 @@
+include ':app'/*, ':relight'*/, ':todo', ':loader'
+//project(':relight').projectDir = new File("D:\\source\\relight\\lib")
