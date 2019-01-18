@@ -9,12 +9,12 @@ import android.arch.persistence.room.PrimaryKey;
 public class Task {
     public static final short STATUS_WAITING = 0;
     public static final short STATUS_DOING = 1;
-    public static final short STATUS_FINISHED = 2;
+    public static final short STATUS_COMPLETED = 2;
 
     public static final short PRIORITY_LOW = 0;
     public static final short PRIORITY_NORMAL = 1;
-    public static final short PRIORITY_IMPORTANT = 2;
-    public static final short PRIORITY_HIGH = 3;
+    public static final short PRIORITY_HIGH = 2;
+    public static final short PRIORITY_URGENT = 3;
 
     @PrimaryKey(autoGenerate = true)
     private Long id;

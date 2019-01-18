@@ -6,8 +6,10 @@ public class TaskWithTags {
     private Task task;
     private List<Tag> tags;
 
-    public TaskWithTags(Task task,
-        List<Tag> tags) {
+    public TaskWithTags() {
+    }
+
+    public TaskWithTags(Task task, List<Tag> tags) {
         this.task = task;
         this.tags = tags;
     }

@@ -1,6 +1,5 @@
 package com.ittianyu.relight.todo.common.datasource.local;
 
-import android.arch.persistence.room.Dao;
 import android.content.Context;
 import android.text.TextUtils;
 import com.ittianyu.relight.todo.common.datasource.TaskDataSource;
@@ -11,12 +10,11 @@ import com.ittianyu.relight.todo.common.datasource.entiry.TaskWithTags;
 import com.ittianyu.relight.todo.common.datasource.local.dao.TagDao;
 import com.ittianyu.relight.todo.common.datasource.local.dao.TaskDao;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 public class LocalTaskDataSource implements TaskDataSource {
-    private static final int COUNT_PER_PAGE = 20;
+    public static final int COUNT_PER_PAGE = 20;
     private static LocalTaskDataSource instance;
 
     public static synchronized LocalTaskDataSource getInstance(Context context) {
@@ -64,6 +62,7 @@ public class LocalTaskDataSource implements TaskDataSource {
             db.endTransaction();
             return false;
         }
+        task.setId(taskId);
 
         if (null == tags) {
             tags = Collections.emptyList();
@@ -111,11 +110,7 @@ public class LocalTaskDataSource implements TaskDataSource {
         if (null == tags) {
             tags = Collections.emptyList();
         }
-        count = tagDao.update(tags);
-        if (count < tags.size()) {
-            db.endTransaction();
-            return false;
-        }
+        tagDao.update(tags);
 
         db.setTransactionSuccessful();
         db.endTransaction();
@@ -123,9 +118,18 @@ public class LocalTaskDataSource implements TaskDataSource {
     }
 
     @Override
-    public List<TaskWithTags> query(int page, long startTime, long endTime, List<SortEntry> sortEntries) {
+    public List<TaskWithTags> query(int page, long startTime, long endTime) {
         int offset = (page - 1) * COUNT_PER_PAGE;
+        List<Task> tasks = taskDao.query(offset, COUNT_PER_PAGE, startTime, endTime);
+        List<TaskWithTags> result = new ArrayList<>();
+        for (Task task : tasks) {
+            List<Tag> tags = tagDao.query(task.getId());
+            result.add(new TaskWithTags(task, tags));
+        }
+        return result;
+    }
 
+    private void generateOrderBy(List<SortEntry> sortEntries) {
         StringBuilder orderBy = new StringBuilder();
         if (sortEntries == null) {
             sortEntries = Collections.emptyList();
@@ -141,13 +145,5 @@ public class LocalTaskDataSource implements TaskDataSource {
         if (orderBy.length() > 0) {
             orderBy.deleteCharAt(orderBy.length() - 1);
         }
-
-        List<Task> tasks = taskDao.query(offset, COUNT_PER_PAGE, startTime, endTime, orderBy.toString());
-        List<TaskWithTags> result = new ArrayList<>();
-        for (Task task : tasks) {
-            List<Tag> tags = tagDao.query(task.getId());
-            result.add(new TaskWithTags(task, tags));
-        }
-        return result;
     }
 }

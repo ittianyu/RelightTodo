@@ -3,5 +3,22 @@
   "todo_list_empty_text": "Add your todo list",
   "todo_list_error_text": "Something wrong with it. Click to try again.",
   "refresh_error": "Refresh failed !",
-  "load_more_error": "Load more data failed !"
+  "load_more_error": "Load more data failed !",
+  "priority_low": "Low priority",
+  "priority_normal": "Normal",
+  "priority_high": "Important",
+  "priority_urgent": "Urgent",
+  "todo_list_title": "Relight To-Do",
+  "add_todo_title": "Add To-Do",
+  "edit_todo_title": "Edit To-Do",
+  "button_ok": "OK",
+  "add_todo_edit_hint_title": "Title",
+  "add_todo_edit_hint_desc": "Description",
+  "add_todo_edit_hint_tags": "Tags(separated by commas)",
+  "add_todo_invalid_tips_title_length": "Please ensure title length between %d and %d",
+  "add_todo_invalid_tips_start_end_time": "Start time can't less than end time",
+  "add_todo_invalid_tips_priority": "Please select a priority!",
+  "add_todo_add_data_error": "Add data failed!",
+  "edit_todo_add_data_error": "Edit data failed!",
+  "todo_list_item_change_status_error": "Change task status failed !"
 }

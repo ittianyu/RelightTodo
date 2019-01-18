@@ -29,7 +29,7 @@ public class SplashScreen extends StatelessWidget<LinearLayout, LinearWidget> im
     protected LinearWidget build(Context context) {
         return new LinearWidget(context, lifecycle,
             new ImageWidget(context, lifecycle).imageDrawable(getDrawable(context, Images.ic_logo)).marginBottom(Sizes.margin_normal),
-            new TextWidget(context, lifecycle).text(getString(Strings.splash_center_title)).textColor(Color.WHITE).textSize(Sizes.text_title3)
+            new TextWidget(context, lifecycle).text(getString(Strings.splash_center_title)).textColor(Color.WHITE).textSize(Sizes.text_title6)
         ).matchParent().backgroundColor(getColor(Colors.color_primary)).orientation(LinearWidget.vertical).gravity(Gravity.CENTER);
     }
 
@@ -41,6 +41,5 @@ public class SplashScreen extends StatelessWidget<LinearLayout, LinearWidget> im
         }, SHOW_TIME);
 
         LocalTaskDataSource ds = LocalTaskDataSource.getInstance(context);
-        System.out.println(ds);
     }
 }

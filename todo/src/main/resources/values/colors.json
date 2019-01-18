@@ -1,5 +1,18 @@
 {
   "color_primary": "#0091ea",
   "color_primary_dark": "#0277bd",
-  "color_common_bg": "#ffffff"
+  "color_black": "#000000",
+  "color_white": "#ffffff",
+  "color_common_bg": "#ffffff",
+  "color_common_gray1": "#515151",
+  "color_common_gray2": "#707070",
+  "color_common_gray3": "#8a8a8a",
+  "color_common_gray4": "#bfbfbf",
+  "color_common_light1": "#e6e6e6",
+  "color_common_light2": "#dbdbdb",
+  "color_common_light3": "#cdcdcd",
+  "color_common_pink": "#d4237a",
+  "color_common_pink_dark": "#d6237a",
+  "color_common_red": "#d81e06",
+  "color_common_red_dark": "#da1e06"
 }

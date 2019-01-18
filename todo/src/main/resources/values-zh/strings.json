@@ -3,5 +3,22 @@
   "todo_list_empty_text": "添加新任务",
   "todo_list_error_text": "请求失败，请点击重试",
   "refresh_error": "刷新失败 !",
-  "load_more_error": "加载更多失败 !"
+  "load_more_error": "加载更多失败 !",
+  "priority_low": "低优先级",
+  "priority_normal": "普通",
+  "priority_high": "重要",
+  "priority_urgent": "紧急",
+  "todo_list_title": "Relight 任务清单",
+  "add_todo_title": "添加任务",
+  "edit_todo_title": "编辑任务",
+  "button_ok": "确定",
+  "add_todo_edit_hint_title": "标题",
+  "add_todo_edit_hint_desc": "描述",
+  "add_todo_edit_hint_tags": "标签(多个用逗号分隔)",
+  "add_todo_invalid_tips_title_length": "请保证标题长度在 %d 到 %d 之间",
+  "add_todo_invalid_tips_start_end_time": "开始时间不能小于结束时间",
+  "add_todo_invalid_tips_priority": "请选择一个优先级 !",
+  "add_todo_add_data_error": "添加任务失败 !",
+  "edit_todo_add_data_error": "修改任务失败 !",
+  "todo_list_item_change_status_error": "修改状态失败 !"
 }

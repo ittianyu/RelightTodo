@@ -32,10 +32,9 @@
 - [x] 数据源定义
 - [x] 本地数据源实现
 - [x] splash 页面
-- [ ] todo list 页面
-- [ ] 添加 todo 页面
-- [ ] 编辑 todo 页面
-- [ ] todo 详情
+- [x] todo list 页面
+- [x] 添加 todo 页面
+- [x] 编辑 todo 页面
 - [ ] 删除 item 支持
 - [ ] todo 排序
 - [ ] 关于 页面
@@ -54,8 +53,8 @@
 - description text
 - start_time long	index
 - end_time long		index
-- status tinyint 	[0:waiting 1:doing 2:finished]
-- priority tinyint	[0:low 1:normal 2:important 3:high]
+- status tinyint 	[0:waiting 1:doing 2:completed]
+- priority tinyint	[0:low 1:normal 2:high 3:urgent]
 - create_time long	index
 
 #### 标签表:tag ####

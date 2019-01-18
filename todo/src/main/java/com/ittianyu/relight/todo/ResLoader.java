@@ -9,6 +9,10 @@ public interface ResLoader {
         return ResourceLoader.getInstance(getClass().getClassLoader()).getString(name);
     }
 
+    default String getString(String name, Object... args) {
+        return String.format(getString(name), args);
+    }
+
     default Drawable getDrawable(Context context, String name) {
         return ResourceLoader.getInstance(getClass().getClassLoader()).getDrawable(context, name);
     }

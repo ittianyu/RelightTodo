@@ -34,15 +34,16 @@ public class EmptyWidget extends StatelessWidget<LinearLayout, LinearWidget> imp
     protected LinearWidget build(Context context) {
         return new LinearWidget(context, lifecycle,
             new ImageWidget(context, lifecycle).imageDrawable(icon)
-                .marginBottom(Sizes.margin_normal),
+                .marginBottom(Sizes.margin_normal)
+                .onClick(onClickListener),
             new TextWidget(context, lifecycle).text(text).textColor(Color.BLACK)
-                .textSize(Sizes.text_title3)
+                .textSize(Sizes.text_title6)
+                .onClick(onClickListener)
         )
             .matchParent()
             .backgroundColor(getColor(Colors.color_common_bg))
             .orientation(LinearWidget.vertical)
-            .gravity(Gravity.CENTER)
-            .onClick(onClickListener);
+            .gravity(Gravity.CENTER);
     }
 
 }

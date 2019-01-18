@@ -5,7 +5,19 @@ public class SortEntry {
     public static final int ORDER_DESC = 1;
 
     private String field;
-    private int order;
+    private int order = ORDER_ASC;
+
+    public SortEntry() {
+    }
+
+    public SortEntry(String field) {
+        this.field = field;
+    }
+
+    public SortEntry(String field, int order) {
+        this.field = field;
+        this.order = order;
+    }
 
     public static int getOrderAsc() {
         return ORDER_ASC;
