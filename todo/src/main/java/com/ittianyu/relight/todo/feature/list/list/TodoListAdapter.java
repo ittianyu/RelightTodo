@@ -23,6 +23,10 @@ public class TodoListAdapter extends WidgetAdapter<TaskWithTags, WidgetHolder<To
 
     @Override
     protected void convert(WidgetHolder<TodoListItemStatefulWidget> helper, TaskWithTags item) {
-        helper.widget.data(item);
+        int position = helper.getLayoutPosition();
+        helper.widget.data(item)
+            .onDelete(() -> {
+                remove(position);
+            });
     }
 }

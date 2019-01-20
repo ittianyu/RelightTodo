@@ -2,21 +2,16 @@ package com.ittianyu.relight.todo.feature.list.list;
 
 import android.arch.lifecycle.Lifecycle;
 import android.content.Context;
-import android.graphics.Canvas;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.Gravity;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
-import com.chad.library.adapter.base.callback.ItemDragAndSwipeCallback;
-import com.chad.library.adapter.base.listener.OnItemDragListener;
-import com.chad.library.adapter.base.listener.OnItemSwipeListener;
 import com.ittianyu.relight.thread.Runnable1;
 import com.ittianyu.relight.todo.ResLoader;
 import com.ittianyu.relight.todo.common.constants.Colors;
+import com.ittianyu.relight.todo.common.constants.Drawables;
 import com.ittianyu.relight.todo.common.constants.Images;
 import com.ittianyu.relight.todo.common.constants.Selectors;
 import com.ittianyu.relight.todo.common.constants.Sizes;
@@ -109,10 +104,12 @@ public class TodoListWidget extends LceermWidget implements ResLoader {
     private RecyclerWidget renderRecycler() {
         adapter = new TodoListAdapter(context, lifecycle, Collections.emptyList());
         adapter.setEnableLoadMore(true);
+        DividerItemDecoration decoration = new DividerItemDecoration(context, DividerItemDecoration.VERTICAL);
+        decoration.setDrawable(Drawables.divider_gray_1px);
         rw = new RecyclerWidget<TodoListAdapter>(context, lifecycle)
             .layoutManager(new LinearLayoutManager(context))
             .adapter(adapter)
-            .addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
+            .addItemDecoration(decoration);
         rw
             .matchParent()
             .onUpdate(() -> {

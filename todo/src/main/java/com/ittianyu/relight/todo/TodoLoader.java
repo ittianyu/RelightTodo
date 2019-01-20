@@ -25,4 +25,14 @@ public class TodoLoader implements Loader, ResLoader {
         );
         return navigator.render();
     }
+
+    @Override
+    public int version() {
+        return 1;
+    }
+
+    @Override
+    public String name() {
+        return Strings.loader_name;
+    }
 }

@@ -39,7 +39,5 @@ public class SplashScreen extends StatelessWidget<LinearLayout, LinearWidget> im
         widget.render().postDelayed(() -> {
             WidgetNavigator.replace(RouterConfig.name, RouterConfig.toDoList);
         }, SHOW_TIME);
-
-        LocalTaskDataSource ds = LocalTaskDataSource.getInstance(context);
     }
 }

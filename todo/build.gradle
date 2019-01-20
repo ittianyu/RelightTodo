@@ -39,12 +39,13 @@ dependencies {
     compileOnly "android.arch.lifecycle:runtime:$lifecycle_version"
     compileOnly "android.arch.lifecycle:common-java8:$lifecycle_version"
 
-    compileOnly 'com.github.ittianyu:relight:-SNAPSHOT'
-//    compileOnly project(':relight')
+//    compileOnly 'com.github.ittianyu:relight:-SNAPSHOT'
+    compileOnly project(':relight')
     compileOnly project(':loader')
 
     compileOnly 'com.orhanobut:logger:2.2.0'
     compileOnly 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.44'
+    compileOnly 'com.squareup.retrofit2:retrofit:2.5.0'
 
     implementation ("android.arch.persistence.room:runtime:$lifecycle_version") {
         exclude group: 'com.android.support'

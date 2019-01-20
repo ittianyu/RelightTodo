@@ -10,7 +10,7 @@ import java.util.Locale;
 public class DateUtils {
     private static final DateFormat dateTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
     private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-    private static final long DAY_MS = 1000L * 60 * 60 * 24;
+    public static final long DAY_MS = 1000L * 60 * 60 * 24;
 
     public static String formatDateTime(long timestamp) {
         return dateTimeFormat.format(new Date(timestamp));

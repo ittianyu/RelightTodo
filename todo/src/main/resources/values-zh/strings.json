@@ -20,5 +20,10 @@
   "add_todo_invalid_tips_priority": "请选择一个优先级 !",
   "add_todo_add_data_error": "添加任务失败 !",
   "edit_todo_add_data_error": "修改任务失败 !",
-  "todo_list_item_change_status_error": "修改状态失败 !"
+  "todo_list_item_change_status_error": "修改状态失败 !",
+  "todo_list_item_delete_error": "删除任务失败 !",
+  "todo_list_menu_edit": "编辑",
+  "todo_list_menu_delete": "删除",
+  "todo_list_menu_hot_update_word_count": "热更新: WordCount",
+  "todo_list_menu_hot_update_todo_app_new": "热更新: ToDo 应用新版"
 }

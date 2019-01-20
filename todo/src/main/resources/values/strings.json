@@ -20,5 +20,10 @@
   "add_todo_invalid_tips_priority": "Please select a priority!",
   "add_todo_add_data_error": "Add data failed!",
   "edit_todo_add_data_error": "Edit data failed!",
-  "todo_list_item_change_status_error": "Change task status failed !"
+  "todo_list_item_change_status_error": "Change task status failed !",
+  "todo_list_item_delete_error": "Delete task failed !",
+  "todo_list_menu_edit": "Edit",
+  "todo_list_menu_delete": "Delete",
+  "todo_list_menu_hot_update_word_count": "Hot Update: WordCount",
+  "todo_list_menu_hot_update_todo_app_new": "Hot Update: ToDoApp new"
 }

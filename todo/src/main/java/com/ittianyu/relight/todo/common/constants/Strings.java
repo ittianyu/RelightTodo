@@ -1,6 +1,7 @@
 package com.ittianyu.relight.todo.common.constants;
 
 public interface Strings {
+    String loader_name = "TodoList";
     String splash_center_title = "splash_center_title";
     String todo_list_empty_text = "todo_list_empty_text";
     String todo_list_error_text = "todo_list_error_text";
@@ -23,4 +24,9 @@ public interface Strings {
     String add_todo_add_data_error = "add_todo_add_data_error";
     String edit_todo_add_data_error = "edit_todo_add_data_error";
     String todo_list_item_change_status_error = "todo_list_item_change_status_error";
+    String todo_list_item_delete_error = "todo_list_item_delete_error";
+    String todo_list_menu_edit = "todo_list_menu_edit";
+    String todo_list_menu_delete = "todo_list_menu_delete";
+    String todo_list_menu_hot_update_click_count = "todo_list_menu_hot_update_click_count";
+    String todo_list_menu_hot_update_todo_app_new = "todo_list_menu_hot_update_todo_app_new";
 }

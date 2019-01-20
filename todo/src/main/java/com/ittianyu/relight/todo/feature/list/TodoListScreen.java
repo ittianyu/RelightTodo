@@ -5,31 +5,41 @@ import android.content.Context;
 import android.support.v4.view.ViewPager;
 import com.ittianyu.relight.todo.ResLoader;
 import com.ittianyu.relight.todo.common.callback.OnClick1;
+import com.ittianyu.relight.todo.common.widget.QuickScrollWidgetPager;
 import com.ittianyu.relight.utils.StateUtils;
-import com.ittianyu.relight.widget.native_.WidgetPager;
 import com.ittianyu.relight.widget.stateful.StatefulWidget;
 import com.ittianyu.relight.widget.stateful.state.State;
 
-public class TodoListScreen extends StatefulWidget<ViewPager, WidgetPager> implements ResLoader {
-    private OnClick1<Boolean> onClickChangePage = showNext -> {
-        int diff = showNext ? 1 : -1;
-        widget.currentItem(widget.currentItem() + diff, true);
+public class TodoListScreen extends StatefulWidget<ViewPager, QuickScrollWidgetPager> implements ResLoader {
+    private TodoListPagerAdapter adapter;
+    private OnClick1<Integer> onClickChangePage = diff -> {
+        int index = widget.currentItem() + diff;
+        if (Math.abs(diff) <= 1) {
+            widget.currentItem(index);
+        } else {
+            adapter.newWidgets();
+            widget.currentItem(index, false);
+        }
     };
-
     public TodoListScreen(Context context, Lifecycle lifecycle) {
         super(context, lifecycle);
     }
 
     @Override
-    protected State<WidgetPager> createState(Context context) {
-        return StateUtils.create(new WidgetPager(context, lifecycle));
+    protected State<QuickScrollWidgetPager> createState(Context context) {
+        return StateUtils.create(new QuickScrollWidgetPager(context, lifecycle));
     }
 
     @Override
-    public void initWidget(WidgetPager widget) {
+    public void initWidget(QuickScrollWidgetPager widget) {
         super.initWidget(widget);
 
-        widget.adapter(new TodoListPagerAdapter(context, lifecycle, onClickChangePage))
+        adapter = newAdapter();
+        widget.adapter(adapter)
             .currentItem(TodoListPagerAdapter.mediumPosition(), false);
+    }
+
+    private TodoListPagerAdapter newAdapter() {
+        return new TodoListPagerAdapter(context, lifecycle, onClickChangePage);
     }
 }

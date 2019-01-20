@@ -5,6 +5,8 @@ import android.os.Environment;
 import java.io.File;
 
 public class DirUtils {
+    public static final String JARS = "jars";
+
     public static String getDirPath(Context context, String dirName) {
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
             || Environment.isExternalStorageRemovable()) {
@@ -33,4 +35,6 @@ public class DirUtils {
 
         return file.getAbsolutePath();
     }
+
+
 }

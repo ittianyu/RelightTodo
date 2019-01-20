@@ -122,4 +122,9 @@ public class CommonToolBarWidget<T extends Widget> extends StatelessWidget<Linea
         tbw.addChildren(widget);
         return this;
     }
+
+    public CommonToolBarWidget onTitleClick(OnClickListener onClick) {
+        twTitle.onClick(onClick);
+        return this;
+    }
 }

@@ -1,6 +1,7 @@
 package com.ittianyu.relight.todo.common.constants;
 
 public interface Sizes {
+    float margin_big1 = 32.0f;
     float margin_big = 24.0f;
     float margin_normal = 16.0f;
     float margin_small = 8.0f;
@@ -20,5 +21,6 @@ public interface Sizes {
     float button_height_small = 24;
 
     float elevation_normal = 8;
+    float elevation_big = 16;
 
 }

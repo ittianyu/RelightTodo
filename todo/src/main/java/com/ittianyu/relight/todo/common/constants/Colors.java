@@ -17,4 +17,7 @@ public interface Colors {
     String color_common_pink_dark = "color_common_pink_dark";
     String color_common_red = "color_common_red";
     String color_common_red_dark = "color_common_red_dark";
+    String color_translucent_gray1 = "color_translucent_gray1";
+    String color_translucent_gray2 = "color_translucent_gray2";
+    String color_translucent_gray3 = "color_translucent_gray3";
 }
