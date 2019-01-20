@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: "com.mobbeel.plugin"
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -47,9 +48,14 @@ dependencies {
     compileOnly 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.44'
     compileOnly 'com.squareup.retrofit2:retrofit:2.5.0'
 
-    implementation ("android.arch.persistence.room:runtime:$lifecycle_version") {
+    api ("android.arch.persistence.room:runtime:$lifecycle_version") {
         exclude group: 'com.android.support'
     }
+
     annotationProcessor "android.arch.persistence.room:compiler:$lifecycle_version"
     testImplementation "android.arch.persistence.room:testing:$lifecycle_version"
+}
+
+aarPlugin {
+    includeAllInnerDependencies true  // It's false for default
 }

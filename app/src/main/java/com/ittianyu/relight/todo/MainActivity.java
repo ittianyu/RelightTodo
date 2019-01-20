@@ -1,20 +1,35 @@
 package com.ittianyu.relight.todo;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+
 import com.ittianyu.relight.activity.WidgetActivity;
 import com.ittianyu.relight.loader.Container;
+import com.ittianyu.relight.loader.HotUpdater;
 import com.ittianyu.relight.loader.Loader;
+import com.ittianyu.relight.loader.utils.DirUtils;
+import com.ittianyu.relight.loader.utils.FileUtils;
 import com.ittianyu.relight.loader.utils.LoaderUtils;
-import com.ittianyu.relight.todo.common.callback.HotUpdater;
 import com.orhanobut.logger.Logger;
 
+import java.io.File;
+import java.io.InputStream;
+
 public class MainActivity extends WidgetActivity implements Container, HotUpdater {
+    private static final String NAME = "loader";
+    private static final String KEY_JAR = "jar";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        load(LoaderUtils.getLoaderByClass(getClassLoader(), "com.ittianyu.relight.clickcount.ClickCountLoader"));
+        SharedPreferences sp = getSp();
+        String jar = sp.getString(KEY_JAR, CLICK_COUNT);
+        hotUpdate(jar);
+    }
+
+    private SharedPreferences getSp() {
+        return getSharedPreferences(NAME, MODE_PRIVATE);
     }
 
     @Override
@@ -35,11 +50,35 @@ public class MainActivity extends WidgetActivity implements Container, HotUpdate
     public void hotUpdate(String name) {
         int resId = 0;
         switch (name) {
-            case "ClickCount":
-//                resId = R.raw
+            case CLICK_COUNT:
+                resId = R.raw.clickcount;
+                break;
+            case TODO_LIST:
+                resId = R.raw.todolist;
                 break;
         }
-//        getResources().openRawResource(resId)
-//        Files.copy()
+        String dir = DirUtils.getDirPath(this, DirUtils.JARS);
+        File file = new File(dir, name + ".jar");
+        if (file.exists()) {
+            loadByFile(file);
+            saveConfig(name);
+            return;
+        }
+
+        InputStream in = getResources().openRawResource(resId);
+        if (FileUtils.copyToFile(in, file)) {
+            loadByFile(file);
+            saveConfig(name);
+        }
+    }
+
+    private void saveConfig(String name) {
+        SharedPreferences sp = getSp();
+        sp.edit().putString(KEY_JAR, name).apply();
+    }
+
+    private void loadByFile(File file) {
+        Loader loader = LoaderUtils.getLoaderByConfig(file.getAbsolutePath(), this);
+        load(loader);
     }
 }

@@ -3,15 +3,18 @@ package com.ittianyu.relight.loader.utils;
 import android.arch.lifecycle.Lifecycle;
 import android.content.Context;
 import android.view.View;
+
 import com.ittianyu.relight.loader.Loader;
-import dalvik.system.DexClassLoader;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import dalvik.system.DexClassLoader;
+
 public class LoaderUtils {
-    public static final String DEX = "dex";
+    public static final String DEX = "outdex";
 
     public static Loader getLoaderByConfig(ClassLoader classLoader) {
         InputStream in = classLoader.getResourceAsStream("loader.properties");

@@ -4,9 +4,10 @@ import android.arch.lifecycle.Lifecycle;
 import android.content.Context;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
 import com.ittianyu.relight.thread.Runnable1;
 import com.ittianyu.relight.todo.ResLoader;
-import com.ittianyu.relight.todo.common.callback.HotUpdater;
+import com.ittianyu.relight.loader.HotUpdater;
 import com.ittianyu.relight.todo.common.constants.Strings;
 import com.ittianyu.relight.todo.common.datasource.entiry.Task;
 import com.ittianyu.relight.todo.common.datasource.entiry.TaskWithTags;
@@ -18,7 +19,6 @@ import com.ittianyu.relight.utils.StateUtils;
 import com.ittianyu.relight.widget.stateful.StatefulWidget;
 import com.ittianyu.relight.widget.stateful.navigator.WidgetNavigator;
 import com.ittianyu.relight.widget.stateful.state.State;
-import java.nio.file.Files;
 
 public class TodoListItemStatefulWidget extends StatefulWidget<LinearLayout, TodoListItemWidget> implements ResLoader {
     private static final int MENU_EDIT = 0;
@@ -95,15 +95,16 @@ public class TodoListItemStatefulWidget extends StatefulWidget<LinearLayout, Tod
                                 });
                                 break;
                             case MENU_HOT_UPDATE_CLICK_COUNT:
-                                hotUpdate("ClickCount");
+                                hotUpdate(HotUpdater.CLICK_COUNT);
                                 break;
                             case MENU_HOT_UPDATE_TODO_NEW:
-                                hotUpdate("ToDoList");
+                                hotUpdate(HotUpdater.TODO_LIST);
                                 break;
                         }
                     }
                 },
                     getString(Strings.todo_list_menu_edit),
+                    getString(Strings.todo_list_menu_delete),
                     getString(Strings.todo_list_menu_hot_update_click_count),
                     getString(Strings.todo_list_menu_hot_update_todo_app_new)
                 );

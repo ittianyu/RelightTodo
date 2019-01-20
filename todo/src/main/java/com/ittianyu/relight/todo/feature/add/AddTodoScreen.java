@@ -94,7 +94,9 @@ public class AddTodoScreen extends StatefulWidget<LinearLayout, LinearWidget> im
     }
 
     private Widget renderTitle() {
-        ewTitle = new TextInputEditWidget(context, lifecycle).widthMatchAndHeightWrap();
+        ewTitle = new TextInputEditWidget(context, lifecycle)
+                .widthMatchAndHeightWrap()
+                .maxLines(1);
         return new TextInputWidget(context, lifecycle,
             ewTitle
         )
