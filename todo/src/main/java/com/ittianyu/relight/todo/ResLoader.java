@@ -2,7 +2,7 @@ package com.ittianyu.relight.todo;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import com.ittianyu.relight.loader.ResourceLoader;
+import com.ittianyu.dynamicupdater.loader.ResourceLoader;
 
 public interface ResLoader {
     default String getString(String name) {

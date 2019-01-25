@@ -1,5 +1,4 @@
-apply plugin: 'com.android.library'
-apply plugin: "com.mobbeel.plugin"
+apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -33,29 +32,26 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    compileOnly "com.android.support:appcompat-v7:$support_version"
-    compileOnly "com.android.support:design:$support_version"
-
+    releaseCompileOnly 'com.github.ittianyu:relight:-SNAPSHOT'
+    debugImplementation 'com.github.ittianyu:relight:-SNAPSHOT'
+//    implementation project(':relight')
+    releaseCompileOnly 'com.github.ittianyu:DynamicUpdater:-SNAPSHOT'
+    debugImplementation 'com.github.ittianyu:DynamicUpdater:-SNAPSHOT'
     //     Support library depends on this lightweight import
-    compileOnly "android.arch.lifecycle:runtime:$lifecycle_version"
-    compileOnly "android.arch.lifecycle:common-java8:$lifecycle_version"
+    releaseCompileOnly "android.arch.lifecycle:common-java8:$lifecycle_version"
+    debugImplementation "android.arch.lifecycle:common-java8:$lifecycle_version"
 
-//    compileOnly 'com.github.ittianyu:relight:-SNAPSHOT'
-    compileOnly project(':relight')
-    compileOnly project(':loader')
+    releaseCompileOnly project(':updater')
+    debugImplementation project(':updater')
 
-    compileOnly 'com.orhanobut:logger:2.2.0'
-    compileOnly 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.44'
-    compileOnly 'com.squareup.retrofit2:retrofit:2.5.0'
+    releaseCompileOnly 'com.orhanobut:logger:2.2.0'
+    debugImplementation 'com.orhanobut:logger:2.2.0'
+    releaseCompileOnly 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.44'
+    debugImplementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.44'
 
-    api ("android.arch.persistence.room:runtime:$lifecycle_version") {
+    implementation ("android.arch.persistence.room:runtime:$lifecycle_version") {
         exclude group: 'com.android.support'
     }
-
     annotationProcessor "android.arch.persistence.room:compiler:$lifecycle_version"
     testImplementation "android.arch.persistence.room:testing:$lifecycle_version"
-}
-
-aarPlugin {
-    includeAllInnerDependencies true  // It's false for default
 }

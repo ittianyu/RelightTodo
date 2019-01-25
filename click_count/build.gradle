@@ -1,18 +1,15 @@
-apply plugin: 'com.android.library'
+apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
-
-
+    compileSdkVersion rootProject.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion 17
-        targetSdkVersion 28
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
@@ -26,6 +23,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
 }
 
 dependencies {
@@ -35,7 +33,15 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    compileOnly 'com.android.support:appcompat-v7:28.0.0'
-    compileOnly project(':loader')
-    compileOnly project(':relight')
+    releaseCompileOnly 'com.github.ittianyu:relight:-SNAPSHOT'
+    debugImplementation 'com.github.ittianyu:relight:-SNAPSHOT'
+//    implementation project(':relight')
+    releaseCompileOnly 'com.github.ittianyu:DynamicUpdater:-SNAPSHOT'
+    debugImplementation 'com.github.ittianyu:DynamicUpdater:-SNAPSHOT'
+
+    releaseCompileOnly "android.arch.lifecycle:common-java8:$lifecycle_version"
+    debugImplementation "android.arch.lifecycle:common-java8:$lifecycle_version"
+
+    releaseCompileOnly project(':updater')
+    debugImplementation project(':updater')
 }

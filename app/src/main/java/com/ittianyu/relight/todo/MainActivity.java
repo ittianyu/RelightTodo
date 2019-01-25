@@ -3,29 +3,29 @@ package com.ittianyu.relight.todo;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import com.ittianyu.dynamicupdater.loader.Container;
+import com.ittianyu.dynamicupdater.loader.Loader;
+import com.ittianyu.dynamicupdater.loader.utils.DirUtils;
+import com.ittianyu.dynamicupdater.loader.utils.FileUtils;
+import com.ittianyu.dynamicupdater.loader.utils.LoaderUtils;
 import com.ittianyu.relight.activity.WidgetActivity;
-import com.ittianyu.relight.loader.Container;
-import com.ittianyu.relight.loader.HotUpdater;
-import com.ittianyu.relight.loader.Loader;
-import com.ittianyu.relight.loader.utils.DirUtils;
-import com.ittianyu.relight.loader.utils.FileUtils;
-import com.ittianyu.relight.loader.utils.LoaderUtils;
+import com.ittianyu.relight.updater.Updater;
+import com.ittianyu.relight.utils.WidgetUtils;
 import com.orhanobut.logger.Logger;
-
 import java.io.File;
 import java.io.InputStream;
 
-public class MainActivity extends WidgetActivity implements Container, HotUpdater {
+
+public class MainActivity extends WidgetActivity implements Container, Updater {
     private static final String NAME = "loader";
-    private static final String KEY_JAR = "jar";
+    private static final String KEY_APK = "apk";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         SharedPreferences sp = getSp();
-        String jar = sp.getString(KEY_JAR, CLICK_COUNT);
-        hotUpdate(jar);
+        String apkName = sp.getString(KEY_APK, "");
+        load(apkName);
     }
 
     private SharedPreferences getSp() {
@@ -47,7 +47,13 @@ public class MainActivity extends WidgetActivity implements Container, HotUpdate
     }
 
     @Override
-    public void hotUpdate(String name) {
+    public void restore() {
+        saveConfig("");
+        load("");
+    }
+
+    @Override
+    public void load(String name) {
         int resId = 0;
         switch (name) {
             case CLICK_COUNT:
@@ -56,9 +62,12 @@ public class MainActivity extends WidgetActivity implements Container, HotUpdate
             case TODO_LIST:
                 resId = R.raw.todolist;
                 break;
+            default:
+                setContentView(WidgetUtils.render(this, SelectWidget.class));
+                return;
         }
-        String dir = DirUtils.getDirPath(this, DirUtils.JARS);
-        File file = new File(dir, name + ".jar");
+        String dir = DirUtils.getDirPath(this, KEY_APK);
+        File file = new File(dir, name);
         if (file.exists()) {
             loadByFile(file);
             saveConfig(name);
@@ -74,7 +83,7 @@ public class MainActivity extends WidgetActivity implements Container, HotUpdate
 
     private void saveConfig(String name) {
         SharedPreferences sp = getSp();
-        sp.edit().putString(KEY_JAR, name).apply();
+        sp.edit().putString(KEY_APK, name).apply();
     }
 
     private void loadByFile(File file) {

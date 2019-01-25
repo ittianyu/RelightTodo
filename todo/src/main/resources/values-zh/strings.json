@@ -25,5 +25,5 @@
   "todo_list_menu_edit": "编辑",
   "todo_list_menu_delete": "删除",
   "todo_list_menu_hot_update_click_count": "热更新: ClickCount",
-  "todo_list_menu_hot_update_todo_app_new": "热更新: ToDo 应用新版"
+  "todo_list_menu_hot_update_restore": "热更新: 还原"
 }

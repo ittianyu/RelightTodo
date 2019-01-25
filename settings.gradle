@@ -1,2 +1,2 @@
-include ':app', ':relight', ':todo', ':loader', ':click_count'
-project(':relight').projectDir = new File("K:\\source_code\\android\\Relight\\lib")
+include ':app', ':updater'/*, ':relight'*/, ':todo', ':click_count'
+//project(':relight').projectDir = new File("D:\\source\\relight\\lib")

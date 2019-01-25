@@ -3,14 +3,13 @@ package com.ittianyu.relight.todo;
 import android.arch.lifecycle.Lifecycle;
 import android.content.Context;
 import android.view.View;
-import com.ittianyu.relight.loader.Loader;
+import com.ittianyu.dynamicupdater.loader.Loader;
 import com.ittianyu.relight.todo.common.constants.Strings;
 import com.ittianyu.relight.todo.common.router.RouterConfig;
 import com.ittianyu.relight.todo.common.widget.CommonToolBarWidget;
 import com.ittianyu.relight.todo.feature.add.AddTodoScreen;
 import com.ittianyu.relight.todo.feature.list.TodoListScreen;
 import com.ittianyu.relight.todo.feature.splash.SplashScreen;
-import com.ittianyu.relight.widget.Widget;
 import com.ittianyu.relight.widget.stateful.navigator.WidgetNavigator;
 import com.ittianyu.relight.widget.stateful.navigator.route.WidgetRoute;
 

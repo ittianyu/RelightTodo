@@ -1,7 +1,7 @@
 package com.ittianyu.relight.todo.common.constants;
 
 import android.graphics.drawable.Drawable;
-import com.ittianyu.relight.loader.ResourceLoader;
+import com.ittianyu.dynamicupdater.loader.ResourceLoader;
 import com.ittianyu.relight.utils.ShapeDrawableBuilder;
 
 public interface Drawables {

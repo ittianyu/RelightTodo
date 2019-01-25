@@ -27,6 +27,5 @@ public interface Strings {
     String todo_list_item_delete_error = "todo_list_item_delete_error";
     String todo_list_menu_edit = "todo_list_menu_edit";
     String todo_list_menu_delete = "todo_list_menu_delete";
-    String todo_list_menu_hot_update_click_count = "todo_list_menu_hot_update_click_count";
-    String todo_list_menu_hot_update_todo_app_new = "todo_list_menu_hot_update_todo_app_new";
+    String todo_list_menu_hot_update_restore = "todo_list_menu_hot_update_restore";
 }

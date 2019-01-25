@@ -24,6 +24,5 @@
   "todo_list_item_delete_error": "Delete task failed !",
   "todo_list_menu_edit": "Edit",
   "todo_list_menu_delete": "Delete",
-  "todo_list_menu_hot_update_click_count": "Hot Update: ClickCount",
-  "todo_list_menu_hot_update_todo_app_new": "Hot Update: ToDoApp new"
+  "todo_list_menu_hot_update_restore": "Hot Update: Restore"
 }

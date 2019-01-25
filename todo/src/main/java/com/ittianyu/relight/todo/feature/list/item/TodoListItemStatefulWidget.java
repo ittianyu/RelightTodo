@@ -7,7 +7,6 @@ import android.widget.Toast;
 
 import com.ittianyu.relight.thread.Runnable1;
 import com.ittianyu.relight.todo.ResLoader;
-import com.ittianyu.relight.loader.HotUpdater;
 import com.ittianyu.relight.todo.common.constants.Strings;
 import com.ittianyu.relight.todo.common.datasource.entiry.Task;
 import com.ittianyu.relight.todo.common.datasource.entiry.TaskWithTags;
@@ -15,6 +14,7 @@ import com.ittianyu.relight.todo.common.datasource.local.LocalTaskDataSource;
 import com.ittianyu.relight.todo.common.router.AddTodoRoute;
 import com.ittianyu.relight.todo.common.router.RouterConfig;
 import com.ittianyu.relight.todo.feature.MenuScreen;
+import com.ittianyu.relight.updater.Updater;
 import com.ittianyu.relight.utils.StateUtils;
 import com.ittianyu.relight.widget.stateful.StatefulWidget;
 import com.ittianyu.relight.widget.stateful.navigator.WidgetNavigator;
@@ -23,8 +23,7 @@ import com.ittianyu.relight.widget.stateful.state.State;
 public class TodoListItemStatefulWidget extends StatefulWidget<LinearLayout, TodoListItemWidget> implements ResLoader {
     private static final int MENU_EDIT = 0;
     private static final int MENU_DELETE = 1;
-    private static final int MENU_HOT_UPDATE_CLICK_COUNT = 2;
-    private static final int MENU_HOT_UPDATE_TODO_NEW = 3;
+    private static final int MENU_HOT_UPDATE_RESTORE = 2;
     private boolean result;
     private Runnable onDelete;
     private Action action = Action.View;
@@ -94,19 +93,15 @@ public class TodoListItemStatefulWidget extends StatefulWidget<LinearLayout, Tod
                                     action = Action.Delete;
                                 });
                                 break;
-                            case MENU_HOT_UPDATE_CLICK_COUNT:
-                                hotUpdate(HotUpdater.CLICK_COUNT);
-                                break;
-                            case MENU_HOT_UPDATE_TODO_NEW:
-                                hotUpdate(HotUpdater.TODO_LIST);
+                            case MENU_HOT_UPDATE_RESTORE:
+                                restore();
                                 break;
                         }
                     }
                 },
                     getString(Strings.todo_list_menu_edit),
                     getString(Strings.todo_list_menu_delete),
-                    getString(Strings.todo_list_menu_hot_update_click_count),
-                    getString(Strings.todo_list_menu_hot_update_todo_app_new)
+                    getString(Strings.todo_list_menu_hot_update_restore)
                 );
 
             });
@@ -147,9 +142,9 @@ public class TodoListItemStatefulWidget extends StatefulWidget<LinearLayout, Tod
         return this;
     }
 
-    private void hotUpdate(String jarName) {
-        if (context instanceof HotUpdater) {
-            ((HotUpdater) context).hotUpdate(jarName);
+    private void restore() {
+        if (context instanceof Updater) {
+            ((Updater) context).restore();
         }
     }
 }

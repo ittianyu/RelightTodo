@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import com.ittianyu.relight.loader.ResourceLoader;
+import com.ittianyu.dynamicupdater.loader.ResourceLoader;
 import com.ittianyu.relight.utils.StateListBuilder;
 
 public interface Selectors {

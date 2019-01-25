@@ -4,11 +4,12 @@ import android.arch.lifecycle.Lifecycle;
 import android.content.Context;
 import android.view.Gravity;
 import android.widget.LinearLayout;
+import com.ittianyu.dynamicupdater.loader.Container;
+import com.ittianyu.dynamicupdater.loader.utils.DirUtils;
 import com.ittianyu.relight.clickcount.constants.Selectors;
 import com.ittianyu.relight.clickcount.constants.Sizes;
 import com.ittianyu.relight.clickcount.constants.Strings;
-import com.ittianyu.relight.loader.Container;
-import com.ittianyu.relight.loader.utils.DirUtils;
+import com.ittianyu.relight.updater.Updater;
 import com.ittianyu.relight.utils.StateUtils;
 import com.ittianyu.relight.widget.native_.BaseLinearWidget;
 import com.ittianyu.relight.widget.native_.LinearWidget;
@@ -67,14 +68,9 @@ public class ClickCountWidget extends StatefulWidget<LinearLayout, LinearWidget>
 
     private void restore() {
         // delete local jar
-        String path = DirUtils.getDirPath(context, DirUtils.JARS);
-        File file = new File(path, Strings.loader_name + ".jar");
-        if (file.exists()) {
-            file.delete();
-        }
         // load
         if (context instanceof Container) {
-            ((Container) context).load(null);
+            ((Updater) context).restore();
         }
     }
 }
